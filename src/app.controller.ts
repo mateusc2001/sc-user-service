@@ -17,9 +17,14 @@ export class AppController {
     return UserResponseMapper.mapToList(await this.appService.findAll());
   }
 
-  @Get('/:id')
+  @Get('/id/:id')
   async findById(@Param('id') id): Promise<UserResponse> {
     return UserResponseMapper.mapTo(await this.appService.findById(id));
+  }
+
+  @Get('/username/:username')
+  async findByUsername(@Param('username') username): Promise<UserResponse> {
+    return UserResponseMapper.mapTo(await this.appService.findByUsername(username));
   }
 
   // Todo

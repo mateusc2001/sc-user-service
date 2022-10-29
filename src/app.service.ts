@@ -25,4 +25,9 @@ export class AppService {
     const userDBList: UserDocument[] = await this.userDb.find();
     return UserModelMapper.mapToList(userDBList);
   }
+
+  async findByUsername(username: string): Promise<UserModel> {
+    const userDBList: UserDocument = await this.userDb.findOne({ username: username });
+    return UserModelMapper.mapTo(userDBList);
+  }
 }
