@@ -24,7 +24,9 @@ export class AppController {
 
   @Get('/username/:username')
   async findByUsername(@Param('username') username): Promise<UserResponse> {
-    return UserResponseMapper.mapTo(await this.appService.findByUsername(username));
+    return UserResponseMapper.mapTo(
+      await this.appService.findByUsername(username),
+    );
   }
 
   @Get('/id-list')
