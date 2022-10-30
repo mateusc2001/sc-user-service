@@ -12,7 +12,6 @@ export class UserModelMapper {
             firstName: userModel.firstName,
             lastName: userModel.lastName,
             username: userModel.username,
-            password: userModel.password,
             createdAt: new Date(userModel.createdAt),
             updatedAt: new Date(userModel.updatedAt)
         });

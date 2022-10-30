@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserResponseMapper } from './mapper/user-response.mapper';
 import { UserResponse } from './model/response/user.model';
@@ -27,9 +27,8 @@ export class AppController {
     return UserResponseMapper.mapTo(await this.appService.findByUsername(username));
   }
 
-  // Todo
-  @Post()
-  update(@Body() userRequest: any): void {
-    // return this.appService.create(userRequest);
+  @Get('/id-list')
+  async update(@Query() id: string[]): Promise<any> {
+    return UserResponseMapper.mapToList(await this.appService.findByIdList(id));
   }
 }
